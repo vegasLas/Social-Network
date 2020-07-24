@@ -20,9 +20,9 @@ class App extends Component {
     this.props.initializeApp()
   }
   render() {
-    if (!this.props.initialized) {
+    /* if (!this.props.initialized) {
       return <Preloader />
-    }
+    } */
     return (
       <div className='app-wrapper'>
         <HeaderContainer />
@@ -52,11 +52,11 @@ let AppConteiner = compose(
 
 const MainApp = (props) => {
   return (
-    <BrowserRouter basename = {process.env.PUBLIC_URL} >
+    <HashRouter>
       <Provider store={store}>
         <AppConteiner />
       </Provider>
-      </BrowserRouter>
+      </HashRouter>
   )
 
 }
