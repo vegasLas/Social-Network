@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import './App.css';
-import { Route, withRouter, HashRouter } from "react-router-dom";
+import { Route, withRouter, HashRouter, BrowserRouter } from "react-router-dom";
 import { connect, Provider } from "react-redux";
 import { compose } from "redux";
 import { initializeApp } from "./redux/app-reducer";
@@ -52,11 +52,11 @@ let AppConteiner = compose(
 
 const MainApp = (props) => {
   return (
-    <HashRouter>
+    <BrowserRouter basename = {process.env.PUBLIC_URL} >
       <Provider store={store}>
         <AppConteiner />
       </Provider>
-    </HashRouter>
+      </BrowserRouter>
   )
 
 }
