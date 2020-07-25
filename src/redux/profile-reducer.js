@@ -54,7 +54,7 @@ const profileReducer = (state = initialState, action) => {
         }
         case SET_PHOTO: {
             return {
-                ...state, profile: {...state.profile, photos: action.photo}
+                ...state, profile: { ...state.profile, photos: action.photo }
             }
         }
         default:
@@ -74,7 +74,7 @@ export const getInformationProfile = (userID, authorizedUserId, history) => (dis
         userId = authorizedUserId;
         if (!userID) {
             history.push("/login");
-        } 
+        }
     }
     dispatch(getUserProfile(userId));
     dispatch(getStatus(userId));
@@ -106,7 +106,8 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
         dispatch(getUserProfile(userId))
     }
     else {
-        dispatch(stopSubmit('ProfileData', {_error: response.data.messages[0]}))
+        dispatch(stopSubmit('ProfileData', {_error:  response.data.messages[0]  }))
+        return Promise.reject(response.data.messages[0])
     }
 }
 

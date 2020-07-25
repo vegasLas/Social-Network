@@ -23,7 +23,7 @@ const ProfileInfo = ({ profile, status, updateStatus, setPhoto, isOwner, savePro
         console.log(formData)
         saveProfile(formData).then(
             () => {
-                /* setEditMode(false) */
+                setEditMode(false)
             }
         )
     }
