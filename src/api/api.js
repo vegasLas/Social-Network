@@ -26,8 +26,11 @@ export const profileAPI = {
     getProfile(userId) {
         return instance.get(`profile/` + userId)
     },
+    saveProfile(profile) {
+        return instance.put(`profile`, profile)
+    },
     getStatus(userId) {
-        return instance.get(`profile/status/` + userId)
+        return instance.get(`profile/userId/` + { userId: userId })
     },
     updateStatus(status) {
         return instance.put(`profile/status`, { status: status })
