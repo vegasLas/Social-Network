@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import './App.css';
-import { Route, withRouter, HashRouter, BrowserRouter } from "react-router-dom";
+import { Route, withRouter, HashRouter, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { connect, Provider } from "react-redux";
 import { compose } from "redux";
 import { initializeApp } from "./redux/app-reducer";
@@ -28,14 +28,17 @@ class App extends Component {
         <HeaderContainer />
         <Navbar />
         <div className='app-wrapper-content'>
-          <Route path='/profile/:userId?'
-            render={createSuspense(ProfileContainer)} />
-          <Route path='/login'
-            render={createSuspense(Login) } />
-          <Route path='/users'
-            render={createSuspense(UsersContainer) } />
-          <Route path='/dialogs'
-            render={createSuspense(DialogsContainer) } />
+          <Switch >
+            <Route path = '/' exact> <Redirect to="/profile" /> </Route>
+            <Route path='/profile/:userId?'
+              render={createSuspense(ProfileContainer)} />
+            <Route path='/login'
+              render={createSuspense(Login)} />
+            <Route path='/users'
+              render={createSuspense(UsersContainer)} />
+            <Route path='/dialogs'
+              render={createSuspense(DialogsContainer)} />
+          </Switch>
         </div>
       </div>
     );
@@ -52,11 +55,11 @@ let AppConteiner = compose(
 
 const MainApp = (props) => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Provider store={store}>
         <AppConteiner />
       </Provider>
-      </HashRouter>
+    </BrowserRouter>
   )
 
 }

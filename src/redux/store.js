@@ -15,19 +15,19 @@ let store = {
         },
         dialogsPage: {
             dialogs: [
-                {id: 1, name: 'Stalin'},
-                {id: 2, name: 'Ejov'},
-                {id: 3, name: 'Beriya'},
-                {id: 4, name: 'Molotov'},
-                {id: 5, name: 'Xrywev'},
-                {id: 6, name: 'Malenkov'}
+                {id: 1, name: 'V'},
+                {id: 2, name: 'asda'},
+                {id: 3, name: 'Doctor'},
+                {id: 4, name: 'Skeptic'},
+                {id: 5, name: 'Avanturist'},
+                {id: 6, name: 'Kalygin'}
             ],
             messages: [
-                {id: 1, message: 'Hi'},
-                {id: 2, message: 'How is your nothing?'},
-                {id: 3, message: 'AWESOME'},
-                {id: 4, message: 'WO WO'},
-                {id: 5, message: 'What did you think?'}
+                {id: 1, message: 'Hi, how is your nothing '},
+                {id: 2, message: 'Are you okey'},
+                {id: 3, message: 'No `I\m` okay'},
+                {id: 4, message: 'Well, how is your parents?'},
+                {id: 5, message: 'I `don\t now, I `don\t chatting with their`'}
             ],
             newMessageBody: ""
         },
