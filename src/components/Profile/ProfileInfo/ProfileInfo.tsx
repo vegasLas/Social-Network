@@ -4,9 +4,20 @@ import classes from './ProfileInfo.module.css'
 import Preloader from '../../../common/Preloader'
 import avatar from '../../../pictures/user.png'
 import ProfileDataReduxForm from './ProfileDataReduxForm'
+import { ProfileType, photoType } from '../../../types/types'
 
+type PropsType = {
+    isOwner: any
+    status: string
+    profile: ProfileType | null
+    setPhoto: (photo: Object) => void
+    updateStatus: (status: string) => void
+    saveProfile: (profile: ProfileType | null) => void
+    goToEditMode: () => void
+}
+type onSubmit = { formData: ProfileType }
 
-const ProfileInfo = ({ profile, status, updateStatus, setPhoto, isOwner, saveProfile }) => {
+const ProfileInfo: React.FC<PropsType> = ({ profile, status, updateStatus, setPhoto, isOwner, saveProfile }) => {
 
     let [editMode, setEditMode] = useState(false)
 
@@ -14,12 +25,12 @@ const ProfileInfo = ({ profile, status, updateStatus, setPhoto, isOwner, savePro
         return <Preloader />
     }
 
-    let onMainChangePhoto = (e) => {
+    let onMainChangePhoto = (e: any) => {
         if (e.target.files.length) {
             setPhoto(e.target.files[0])
         }
     }
-    let onSubmit = (formData) => {
+    let onSubmit = (formData: ProfileType) => {
         console.log(formData)
         saveProfile(formData).then(
             () => {
@@ -34,7 +45,7 @@ const ProfileInfo = ({ profile, status, updateStatus, setPhoto, isOwner, savePro
             {isOwner && <input type={"file"} onChange={onMainChangePhoto} />}
             <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
             {editMode
-                ? <ProfileDataReduxForm initialValues = {profile} goToEditMode={goToEditMode} onSubmit={onSubmit} profile={profile} />
+                ? <ProfileDataReduxForm initialValues={profile} goToEditMode={goToEditMode} onSubmit={onSubmit} profile={profile} />
                 : <ProfileInf goToEditMode={goToEditMode} isOwner={isOwner} profile={profile} />
             }
         </div>
@@ -42,7 +53,7 @@ const ProfileInfo = ({ profile, status, updateStatus, setPhoto, isOwner, savePro
     )
 }
 
-const ProfileInf = ({ isOwner, goToEditMode, profile }) => {
+const ProfileInf: React.FC<PropsType> = ({ isOwner, goToEditMode, profile }) => {
     return <div>
         {isOwner && <div><button onClick={goToEditMode} >edit</button></div>
         }
@@ -62,7 +73,11 @@ const ProfileInf = ({ isOwner, goToEditMode, profile }) => {
         </div>
     </div>
 }
-const Contact = ({ contactTitle, contactValue }) => {
+type PropsContactType = {
+    contactTitle: Object
+    contactValue: ProfileType
+}
+const Contact: React.FC<PropsContactType> = ({ contactTitle, contactValue }) => {
     return <div className={classes.contact}>
         <b>{contactTitle}</b>: {contactValue}
     </div>

@@ -1,6 +1,9 @@
-export type photoType =  { 
-    small: string,
-    large: string }
+export type photoType = {
+    photos: {
+        small: string | null,
+        large: string | null
+    }
+}
 
 export type contactsType = {
     contacts: object
@@ -21,8 +24,15 @@ export type ProfileType = {
     contacts: contactsType | null
     photos: photoType | null
 }
+export type SaveProfileType = {
+    userId: number | null
+    lookingForAJob: boolean | null
+    lookingForAJobDescription: string | null
+    fullName: string | null
+    contacts: contactsType | null
+}
 export type userType = {
-    id: number  
+    id: number
     name: string
     status: string
     photos: photoType
