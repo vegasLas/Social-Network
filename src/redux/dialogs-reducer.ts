@@ -4,7 +4,7 @@ type dialogType  = {
     id: number
     name: String
 }
-type messageType  = {
+export type messageType  = {
     id: number
     message: String
     isSituation: boolean
@@ -29,9 +29,9 @@ let initialState = {
     ]as Array<messageType>
 };
 
-type initialStateType = typeof initialState
-
-const dialogsReducer = (state = initialState, action: any): initialStateType => {
+export type initialStateType = typeof initialState
+type ActionsType = sendMessageCreatorType
+const dialogsReducer = (state = initialState, action: ActionsType): initialStateType => {
     switch (action.type) {
         case SEND_MESSAGE:
             let body = action.newMessageBody;

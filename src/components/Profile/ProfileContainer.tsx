@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import Profile from './ProfileType'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { getStatus, getUserProfile, updateStatus, setStatus, setPhoto, saveProfile } from "../../redux/profile-reducer";
+import { getStatus, getUserProfile, updateStatus,  setPhoto, saveProfile } from "../../redux/profile-reducer";
 //@ts-ignore
 import { withRouter } from 'react-router-dom'
-import { ProfileType } from '../../types/types'
+import { ProfileType, SaveProfileType } from '../../types/types'
 import { AppReducersType } from '../../redux/redux-store';
 import { RouteComponentProps } from 'react-router';
 type PathParamsType = {
@@ -63,18 +63,17 @@ type MapStateToPropsType = {
     isAuth: boolean
 }
 type MapDisptchToPropsType = {
-    setPhoto: (photo: Object) => void
+    setPhoto: (photo: Blob) => void
     updateStatus: (status: string) => void
     getStatus: (userId: number) => void
     getUserProfile: (userId: number) => void
-    setStatus: (status: string) => void
-    saveProfile: (profile: ProfileType | null) => void
+    saveProfile: (profile: SaveProfileType) => void
 }
 type OwnToProps = {
     nash: 'samKak'
 }
 
 export default compose(
-    connect<MapStateToPropsType, MapDisptchToPropsType, OwnToProps, AppReducersType>(mapStateToProps, { setPhoto, updateStatus, getStatus, getUserProfile, setStatus, saveProfile }),
+    connect<MapStateToPropsType, MapDisptchToPropsType, OwnToProps, AppReducersType>(mapStateToProps, { setPhoto, updateStatus, getStatus, getUserProfile, saveProfile }),
     withRouter)
     (ProfileContainer)

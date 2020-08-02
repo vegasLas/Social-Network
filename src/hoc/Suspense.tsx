@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react'
+type PropsType = {
 
-const createSuspense = (Component) => {
+}
+function createSuspense<WCP>  (Component) {
     return  (props) => {
     return <Suspense fallback={<div>Loading...</div>}>
         <Component {...props} />

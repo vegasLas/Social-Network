@@ -2,16 +2,15 @@ import React, { Props } from 'react'
 import classes from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import MyPostsContainer from './MyPosts/MyPostContainer'
-import { photoType, ProfileType } from '../../types/types'
+import { ProfileType, SaveProfileType } from '../../types/types'
 
 type PropsType = {
     isOwner: any
     status: string
     profile: ProfileType | null
-    setPhoto: (photo: Object) => void
-    setStatus: (status: string) => void
+    setPhoto: (photo: Blob) => void
     updateStatus: (status: string) => void
-    saveProfile: (profile: ProfileType | null) => void
+    saveProfile: (profile: SaveProfileType) => void
 }
 
 const Profile: React.FC<PropsType> = ({isOwner, status, profile, setPhoto, updateStatus, saveProfile}) => {

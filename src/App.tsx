@@ -1,21 +1,22 @@
 import React, { Component, Suspense } from 'react';
 import './App.css';
-import { Route, withRouter, HashRouter, BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { Route, withRouter, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { connect, Provider } from "react-redux";
 import { compose } from "redux";
-import { initializeApp } from "./redux/app-reducer";
-import store from "./redux/redux-store";
+import store, { AppReducersType } from "./redux/redux-store";
 import Preloader from './common/Preloader';
 import Navbar from './components/NavBar/Navbar';
 import HeaderContainer from './components/Header/HeaderContainer';
 import createSuspense from './hoc/Suspense';
+import {initializeApp, ThunkType} from './redux/app-reducer'
 const Login = React.lazy(() => import('./components/Login/Login'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
+type PropsType =  mstp & mdtp 
 
-class App extends Component {
+class App extends Component<PropsType> {
   componentDidMount() {
     this.props.initializeApp()
   }
@@ -44,16 +45,21 @@ class App extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
+type mstp = {
+  initialized: boolean
+}
+type mdtp = {
+  initializeApp: () => void
+}
+const mapStateToProps = (state: AppReducersType) => ({
   initialized: state.app.initialized
 })
 let AppConteiner = compose(
   withRouter,
-  connect(mapStateToProps, { initializeApp })
+  connect<mstp, mdtp, unknown, AppReducersType>(mapStateToProps, { initializeApp })
 )(App)
 
-const MainApp = (props) => {
+const MainApp = (props: any) => {
   return (
     <BrowserRouter>
       <Provider store={store}>

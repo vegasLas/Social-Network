@@ -1,12 +1,9 @@
 export type photoType = {
-    photos: {
         small: string | null,
         large: string | null
-    }
 }
 
 export type contactsType = {
-    contacts: object
     github: string
     vk: string
     facebook: string
@@ -21,15 +18,15 @@ export type ProfileType = {
     lookingForAJob: boolean | null
     lookingForAJobDescription: string | null
     fullName: string | null
-    contacts: contactsType | null
-    photos: photoType | null
+    contacts: contactsType
+    photos: photoType
 }
 export type SaveProfileType = {
-    userId: number | null
-    lookingForAJob: boolean | null
-    lookingForAJobDescription: string | null
-    fullName: string | null
-    contacts: contactsType | null
+    userId: number 
+    lookingForAJob: boolean 
+    lookingForAJobDescription: string 
+    fullName: string 
+    contacts: contactsType 
 }
 export type userType = {
     id: number
@@ -38,4 +35,7 @@ export type userType = {
     photos: photoType
     followed: boolean
 
+}
+export type PostType = {
+    id: number, message: string, likesCount: number
 }
