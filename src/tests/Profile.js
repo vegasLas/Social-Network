@@ -1,6 +1,5 @@
-import React from 'react';
+/* import React from 'react';
 import ProfileStatusWithHooks from '../components/Profile/ProfileInfo/ProfileStatusWithHooks';
-import ProfileStatus from '../components/Profile/ProfileInfo/ProfileStatusDemo';
 import { create } from 'react-test-renderer';
 import Adapter from 'enzyme-adapter-react-16'
 import Enzyme, { shallow, mount } from 'enzyme';
@@ -41,11 +40,11 @@ describe('ProfileStatus component', () => {
         const instance = component.getInstance()
         instance.deActivatedEditMode()
         expect(mockCallBack.mock.calls.length).toBe(1)
-    }) */
+    }) 
     it('After creation <span> should be displayd', () => {
         let component = create(<ProfileStatusWithHooks status = 'auuu' />)
         let root = component.root;
         let spans = root.findByType('span')
         expect(spans).not.toBeNull()
     })
-})
+}) */

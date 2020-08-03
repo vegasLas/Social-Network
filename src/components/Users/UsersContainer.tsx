@@ -64,6 +64,6 @@ let mapStateToProps = (state: AppReducersType): MapStatePropsType => {
     }
 }
 
-export default compose(
+export default compose<React.ComponentType>(
     connect<MapStatePropsType, MapDispatchPropsType, OwnToProps, AppReducersType>(mapStateToProps, { follow, unfollow, getUsers: requestUsers })
 )(UsersContainer)

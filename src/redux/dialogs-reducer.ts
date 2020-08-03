@@ -1,12 +1,12 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
 
-type dialogType  = {
+export type dialogsType  = {
     id: number
     name: String
 }
 export type messageType  = {
     id: number
-    message: String
+    message: string
     isSituation: boolean
 }
 
@@ -19,7 +19,7 @@ let initialState = {
         {id: 4, name: 'Toro'},
         {id: 5, name: 'Viking'},
         {id: 6, name: 'Axiles'}
-    ]as Array<dialogType>,
+    ]as Array<dialogsType>,
     messages: [
         {id: 1, message: 'Hi', isSituation: true},
         {id: 2, message: 'How is your nothing?0', isSituation: false},

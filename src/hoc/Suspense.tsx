@@ -1,11 +1,9 @@
-import React, { Suspense } from 'react'
-type PropsType = {
+import React, { Suspense, ComponentType } from 'react'
 
-}
-function createSuspense<WCP>  (Component) {
-    return  (props) => {
+function createSuspense<WP>(WrappedComponent: ComponentType<WP>) {
+    return  (props: WP) => {
     return <Suspense fallback={<div>Loading...</div>}>
-        <Component {...props} />
+        <WrappedComponent {...props} />
     </Suspense>
     }
 }

@@ -28,7 +28,7 @@ export const input: React.FC<WrappedFieldProps> = (props) => {
     return <FormControl {...props}><input {...input} {...restProps} /></FormControl>
 }
 
-type NameTypq = {
+type NameType = {
     email: string
     password: string
     rememberMe: boolean

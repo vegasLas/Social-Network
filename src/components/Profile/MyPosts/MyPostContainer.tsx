@@ -9,19 +9,17 @@ import { PostType } from '../../../types/types'
 const mapStateToProps = (state: AppReducersType): MapStateToProps => {
     return {
         posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
     }
 }
-type MapStateToProps= {
+export type MapStateToProps= {
     posts: Array<PostType>
-    newPostText: string
 }
-type MapDispatchToProps= {
-    actions: typeof actions
+export type MapDispatchToProps= {
+    addPost: (newPostText: string) => void
 }
 export type post = {
     id: number, message: string, likesCount: number
 }
-const MyPostsContainer = connect<MapStateToProps, MapDispatchToProps, unknown, AppReducersType>(mapStateToProps, {actions})(MyPosts)
+const MyPostsContainer = connect<MapStateToProps, MapDispatchToProps, {}, AppReducersType>(mapStateToProps, {addPost: actions.addPostActionCreator})(MyPosts)
 
 export default MyPostsContainer

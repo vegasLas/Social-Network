@@ -2,8 +2,8 @@ import React from 'react'
 import logo from '../../pictures/logo.png'
 import classes from './Header.module.css'
 import { NavLink } from 'react-router-dom'
-
-const Header = (props) => {
+import {PropsType} from './HeaderContainer'
+const Header: React.FC<PropsType> = (props) => {
     
     return <header className = {classes.header}>
         <img className = {classes.logo} src = {logo}/>

@@ -8,13 +8,19 @@ import Preloader from './common/Preloader';
 import Navbar from './components/NavBar/Navbar';
 import HeaderContainer from './components/Header/HeaderContainer';
 import createSuspense from './hoc/Suspense';
-import {initializeApp, ThunkType} from './redux/app-reducer'
+import { initializeApp, ThunkType } from './redux/app-reducer'
 const Login = React.lazy(() => import('./components/Login/Login'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
-type PropsType =  mstp & mdtp 
+type PropsType = mstp & mdtp
+
+const ProfileConteincerWithSuspens = createSuspense(ProfileContainer)
+const LoginWithSuspens = createSuspense(Login)
+const UsersContainerWithSuspens = createSuspense(UsersContainer)
+const DialogsContainerWithSuspens = createSuspense(DialogsContainer)
+
 
 class App extends Component<PropsType> {
   componentDidMount() {
@@ -30,15 +36,15 @@ class App extends Component<PropsType> {
         <Navbar />
         <div className='app-wrapper-content'>
           <Switch >
-            <Route path = '/' exact> <Redirect to="/profile" /> </Route>
+            <Route path='/' exact> <Redirect to="/profile" /> </Route>
             <Route path='/profile/:userId?'
-              render={createSuspense(ProfileContainer)} />
+              render={() => <ProfileConteincerWithSuspens/> }/>
             <Route path='/login'
-              render={createSuspense(Login)} />
+              render={() => <LoginWithSuspens />} />
             <Route path='/users'
-              render={createSuspense(UsersContainer)} />
+              render={() => <UsersContainerWithSuspens />} />
             <Route path='/dialogs'
-              render={createSuspense(DialogsContainer)} />
+              render={() => <DialogsContainerWithSuspens />} />
           </Switch>
         </div>
       </div>
@@ -54,7 +60,7 @@ type mdtp = {
 const mapStateToProps = (state: AppReducersType) => ({
   initialized: state.app.initialized
 })
-let AppConteiner = compose(
+let AppConteiner = compose<React.ComponentType>(
   withRouter,
   connect<mstp, mdtp, unknown, AppReducersType>(mapStateToProps, { initializeApp })
 )(App)

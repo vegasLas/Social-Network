@@ -2,7 +2,7 @@ import React, { Props } from 'react'
 import classes from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import MyPostsContainer from './MyPosts/MyPostContainer'
-import { ProfileType, SaveProfileType } from '../../types/types'
+import { ProfileType } from '../../types/types'
 
 type PropsType = {
     isOwner: any
@@ -10,7 +10,7 @@ type PropsType = {
     profile: ProfileType | null
     setPhoto: (photo: Blob) => void
     updateStatus: (status: string) => void
-    saveProfile: (profile: SaveProfileType) => void
+    saveProfile: (profile: ProfileType) => Promise<any>
 }
 
 const Profile: React.FC<PropsType> = ({isOwner, status, profile, setPhoto, updateStatus, saveProfile}) => {

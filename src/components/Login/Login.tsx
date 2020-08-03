@@ -4,7 +4,7 @@ import { required } from '../../utils/validators'
 import classes from '../../common/Formcontrols/FormControl.module.css'
 import { reduxForm, InjectedFormProps } from 'redux-form'
 import { Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { connect, MapDispatchToProps, MapStateToProps } from 'react-redux'
 import { login, captchaDisplayed } from '../../redux/auth-reducer'
 import { AppReducersType } from '../../redux/redux-store'
 
@@ -67,4 +67,4 @@ type MapDispatchToPropsType = {
 }
 type OwnType = {}
 
-export default connect(mapStateToProps, { login, captchaDisplayed })(Login)
+export default connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppReducersType>(mapStateToProps, { login, captchaDisplayed })(Login)

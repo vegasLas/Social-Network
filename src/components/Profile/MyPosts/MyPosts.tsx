@@ -4,7 +4,7 @@ import { maxLengthCreator, required } from '../../../utils/validators';
 import { reduxForm, InjectedFormProps } from 'redux-form';
 import { createField, TextArea } from '../../../common/Formcontrols/FormControl';
 import Post from './Post/Post';
-import {PostType} from '../../../types/types'
+import { MapStateToProps, MapDispatchToProps } from './MyPostContainer';
 
 
 let maxLength = maxLengthCreator(30)
@@ -12,28 +12,24 @@ let maxLength = maxLengthCreator(30)
 type FormData = {
     newPostText: string 
 }
-
+type FormDataKey  = Extract<keyof FormData, string>
 let AddNewPostForm: React.FC<InjectedFormProps<FormData>> = ({handleSubmit}) => {
     return <form onSubmit={handleSubmit}>
-        {createField('Post message', 'newPostText', [required, maxLength], TextArea)}
+        {createField<FormDataKey>('Post message', 'newPostText', [required, maxLength], TextArea)}
         <button>Add post</button>
     </form>
 }
 let AddNewPostFormRedux = reduxForm<FormData>({ form: 'ProfileAddNewPostForm' })(AddNewPostForm)
 
-type PropsType = {
-    addPostActionCreator: (newPostText: string) => string
-    posts: Array<PostType>
-}
 
-const MyPosts = React.memo<PropsType>(props => {
+const MyPosts = React.memo<MapStateToProps & MapDispatchToProps>(props => {
     let postElements =
         [...props.posts]
             .reverse()
             .map(p => <Post message={p.message} likesCount={p.likesCount} />)
 
     let onAddPost = (value: FormData) => {
-        props.addPostActionCreator(value.newPostText);
+        props.addPost(value.newPostText);
     }
     return (
         <div className={classes.postsBlock}>

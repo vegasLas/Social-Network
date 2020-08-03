@@ -2,31 +2,13 @@ import React from 'react'
 import { createField, input, TextArea } from '../../../common/Formcontrols/FormControl'
 import { reduxForm, InjectedFormProps } from 'redux-form'
 import classes from './ProfileInfo.module.css'
-import { ProfileType, SaveProfileType } from '../../../types/types'
-import { type } from 'os'
-
-type FormData = {
-    userId: number
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName: string
-    contacts: {
-        github: string
-        vk: string
-        facebook: string
-        instagram: string
-        twitter: string
-        website: string
-        youtube: string
-        mainLink: string
-    }
-}
+import { ProfileType } from '../../../types/types'
 
 type PropsType = {
     profile: ProfileType
 }
-type FormDataKey = Extract<keyof FormData, string>
-const ProfileData: React.FC<InjectedFormProps<FormData, PropsType> & PropsType> = ({ handleSubmit, profile, error }) => {
+type FormDataKey = Extract<keyof ProfileType, string>
+const ProfileData: React.FC<InjectedFormProps<ProfileType, PropsType> & PropsType> = ({ handleSubmit, profile, error }) => {
     return <form onSubmit={handleSubmit}>
         {error && <div className={classes.formSummaryError}>{error}</div>}
         <button>Save</button>
@@ -38,6 +20,10 @@ const ProfileData: React.FC<InjectedFormProps<FormData, PropsType> & PropsType> 
             <div>
                 <b>My proffesional skills</b>:
         {createField<FormDataKey>("My professional skills", "lookingForAJobDescription", [], TextArea)}
+            </div>
+            <div>
+                <b>About Me</b>:
+        {createField<FormDataKey>("AboutMe", "aboutMe", [], TextArea)}
             </div>
             <div>
                 <b>Looking for a job</b>:
@@ -56,6 +42,6 @@ const ProfileData: React.FC<InjectedFormProps<FormData, PropsType> & PropsType> 
     </form>
 }
 
-const ProfileDataReduxForm = reduxForm<FormData, PropsType>({ form: "ProfileData" })(ProfileData)
+const ProfileDataReduxForm = reduxForm<ProfileType, PropsType>({ form: "ProfileData" })(ProfileData)
 
 export default ProfileDataReduxForm

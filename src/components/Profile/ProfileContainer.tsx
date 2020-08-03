@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 import { getStatus, getUserProfile, updateStatus,  setPhoto, saveProfile } from "../../redux/profile-reducer";
 //@ts-ignore
 import { withRouter } from 'react-router-dom'
-import { ProfileType, SaveProfileType } from '../../types/types'
+import { ProfileType} from '../../types/types'
 import { AppReducersType } from '../../redux/redux-store';
 import { RouteComponentProps } from 'react-router';
 type PathParamsType = {
-    userId: any
+    userId: string
 }
 
 type PropsType = RouteComponentProps<PathParamsType> & MapStateToPropsType & MapDisptchToPropsType 
@@ -18,15 +18,21 @@ type PropsType = RouteComponentProps<PathParamsType> & MapStateToPropsType & Map
 
 class ProfileContainer extends Component<PropsType> {
     refreshProfile() {
-        let userId = this.props.match.params.userId;
+        let userId: number | null = +this.props.match.params.userId;
         if (!userId) {
             userId = this.props.authorizedUserId;
             if (!userId) {
                 this.props.history.push("/login");
             }
         }
-        this.props.getUserProfile(userId);
+
+
+        if (!userId) {
+            console.error("ID should exists in URI params or in state ('authorizedUserId')");
+        }
+        else {
         this.props.getStatus(userId);
+        this.props.getUserProfile(userId);}
     }
     componentDidMount() {
         this.refreshProfile();
@@ -67,13 +73,11 @@ type MapDisptchToPropsType = {
     updateStatus: (status: string) => void
     getStatus: (userId: number) => void
     getUserProfile: (userId: number) => void
-    saveProfile: (profile: SaveProfileType) => void
-}
-type OwnToProps = {
-    nash: 'samKak'
+    saveProfile: (profile: ProfileType) => Promise<any>
+    savePhoto: (file: File) => void
 }
 
-export default compose(
-    connect<MapStateToPropsType, MapDisptchToPropsType, OwnToProps, AppReducersType>(mapStateToProps, { setPhoto, updateStatus, getStatus, getUserProfile, saveProfile }),
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, { setPhoto, updateStatus, getStatus, getUserProfile, saveProfile }),
     withRouter)
     (ProfileContainer)

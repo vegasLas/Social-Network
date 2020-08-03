@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from 'react'
 type PropsType = {
     status: string
-    propsStatus: string
     updateStatus: (status: string) => void
 }
 const ProfileStatusWithHooks: React.FC<PropsType> = (props) => {
-    let {status: propsStatus, updateStatus} = props
     let [editMode, setEditMode] = useState(false)
-    let [status, setStatus] = useState(propsStatus)
+    let [status, setStatus] = useState(props.status)
 
     useEffect(() => {
         setStatus(status);
-    }, [propsStatus]);
+    }, [props.status]);
 
     const activatedEditMode = () => {
         setEditMode(true)
     }
     const deActivatedEditMode = () => {
         setEditMode(false)
-        updateStatus(status);
+        props.updateStatus(status);
     }
 
     const onStatusChange = (e: any) => {

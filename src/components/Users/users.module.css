@@ -2,5 +2,7 @@
      width: 100px;
     height: 100px;
 }
-
-
+.UsersMainBlock {
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+}

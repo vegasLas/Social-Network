@@ -20,6 +20,7 @@ export type ProfileType = {
     fullName: string | null
     contacts: contactsType
     photos: photoType
+    aboutMe: string
 }
 export type SaveProfileType = {
     userId: number 

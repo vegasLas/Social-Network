@@ -18,7 +18,6 @@ let initialState = {
     ] as Array<postType>,
     profile: null as ProfileType | null,
     status: '' as string,
-    newPostText: '' as string
 }
 export type initialStateType = typeof initialState
 const profileReducer = (state = initialState, action: ActionsType): initialStateType => {
@@ -32,7 +31,6 @@ const profileReducer = (state = initialState, action: ActionsType): initialState
             return {
                 ...state,
                 posts: [...state.posts, newPost],
-                newPostText: ""
             }
         }
         case "SET_STATUS": {
@@ -69,7 +67,6 @@ export const actions = {
     deletePost: (postId: number) => ({ type: "DELETE_POST", postId } as const),
     setPhotoSuccess: (photos: photoType) => ({ type: "SET_PHOTO", photos } as const)
 }
-type DispatchType = Dispatch<ActionsType>
 
 type ThunkType = BaseThunkType<ActionsType | ReturnType<typeof stopSubmit>>
 
@@ -86,10 +83,13 @@ export const getInformationProfile = (userID: number, authorizedUserId: number, 
 }
 export const getUserProfile = (userId: number): ThunkType => async (dispatch) => {
     let data = await profileAPI.getProfile(userId);
+    debugger
     dispatch(actions.setUserProfile(data))
 }
 export const getStatus = (userId: number): ThunkType => async (dispatch) => {
+    debugger
     let data = await profileAPI.getStatus(userId);
+    debugger
     dispatch(actions.setStatus(data))
 }
 export const updateStatus = (status: string): ThunkType => async (dispatch) => {
@@ -104,7 +104,7 @@ export const setPhoto = (photo: Blob): ThunkType => async (dispatch) => {
         dispatch(actions.setPhotoSuccess(data.data.photos))
     }
 }
-export const saveProfile = (profile: SaveProfileType): ThunkType => async (dispatch, getState) => {
+export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch, getState) => {
     const userId = getState().auth.userid
     let data = await profileAPI.saveProfile(profile);
     if (data.resultCode === ResultCodeEnum.Success) {
