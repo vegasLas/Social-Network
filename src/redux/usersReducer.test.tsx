@@ -39,9 +39,14 @@ beforeEach(() => {
         totalUsersCount: 10,
         currentPage: 1,
         isFetching: false,
-        followingProgress: []
+        followingProgress: [],
+        filter: {
+            friend: true,
+            term: ''
+        }
+}
     }
-})
+)
 test("follow success", () => {
 let newState = usersReducer(state, actions.followSuccess(1))
 

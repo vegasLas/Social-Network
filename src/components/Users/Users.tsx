@@ -14,7 +14,7 @@ type PropsType = {
     follow: (userId: number) => void
 }
 let Users: React.FC<PropsType> = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, ...props }) => {
-    return <div className = {classes.UsersMainBlock}>
+    return <div className={classes.UsersMainBlock}>
         <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
             totalItemsCount={totalUsersCount} pageSize={pageSize} />
         <div>
