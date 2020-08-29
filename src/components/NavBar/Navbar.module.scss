@@ -1,0 +1,77 @@
+.nav {
+    background-color: white;
+    padding: 20px;
+    grid-column: 2 / 3;
+    border-top: 1px solid white;
+
+    .item {
+        margin-bottom: 8px;
+        width: 160px;
+        height: 25px;
+        border-radius: 4px;
+        padding-top: 3px;
+        color: #90ee90;
+        display: block;
+        padding-left: 4px;
+
+        &:hover {
+            background-color: #e4f1e4
+        }
+
+        &:nth-child(1) {
+            &:before {
+                content: url(../../pictures/navbar/profile.png);
+                padding-right: 9px;
+            }
+        }
+
+        &:nth-child(2) {
+            &:before {
+                content: url(../../pictures/navbar/dialogs.png);
+                padding-right: 5px;
+            }
+        }
+
+        &:nth-child(3) {
+            &:before {
+                content: url(../../pictures/navbar/users.png);
+                padding-right: 5px;
+            }
+        }
+
+        &:nth-child(4) {
+            &:before {
+                content: url(../../pictures/navbar/news.png);
+                padding-right: 5px;
+            }
+        }
+
+        &:nth-child(5) {
+            &:before {
+                content: url(../../pictures/navbar/music.png);
+                padding-right: 5px;
+            }
+        }
+
+        &:nth-child(6) {
+            &:before {
+                content: url(../../pictures/navbar/settings.png);
+                padding-right: 5px;
+            }
+        }
+
+    }
+}
+
+
+.item a {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: lightgreen;
+    text-decoration: none;
+    text-transform: unset;
+}
+
+.item a:hover {
+    color: gold;
+}

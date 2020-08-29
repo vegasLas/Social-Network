@@ -1,9 +1,10 @@
 import React from 'react';
-import Paginator from "../../common/Paginator/PaginatorDemo";
+import Paginator from "../../common/Paginator/Paginator";
 import User from "./User";
 import { userType } from '../../types/types';
 import { FilterType } from '../../redux/usersReducer';
 import UsersSearchForm from './UsersSearchForm'
+import classes from './users.module.scss'
 type PropsType = {
     currentPage: number,
     totalUsersCount: number,
@@ -16,7 +17,7 @@ type PropsType = {
     follow: (userId: number) => void
 }
 let Users: React.FC<PropsType> = ({ currentPage, totalUsersCount, pageSize, onFilterChange, onPageChanged, users, ...props }) => {
-    return <div>
+    return <div className={classes.main}>
         <UsersSearchForm onFilterChange={onFilterChange} />
         <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
             totalItemsCount={totalUsersCount} pageSize={pageSize} />

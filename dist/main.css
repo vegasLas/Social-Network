@@ -1,0 +1,92 @@
+*{padding: 0;margin: 0;border: 0;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height:100%;width:100%;font-size:100%;line-height:1;font-size:14px;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+input,button,textarea{font-family:inherit;}
+.root {height: 100%;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner{padding:0;border:0;}
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.app-wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template: minmax(80px, auto) 1fr minmax(70px, auto)/1fr;
+  grid-template-areas: "h" "c" "f"; }
+  .app-wrapper .app-wrapper-content {
+    display: grid;
+    grid-area: c;
+    grid-template: 1fr/1fr minmax(auto, 200px) minmax(auto, 1200px) 1fr;
+    background-color: white; }
+  .app-wrapper .main-screen {
+    display: grid;
+    grid-column: 3 / 4; }
+  .app-wrapper .footer {
+    grid-area: f;
+    background-color: darkslateblue; }
+
+._1wUJ1isQHX31Aa44cZKH-k {
+    width: 200px;
+    height: 200px;
+}
+._3LZpYMH2_z-NvK1k06LuHF {
+    background-color: lightgreen;
+    padding: 20px;
+    grid-column: 2 / 3;
+    border-top: 1px solid white;
+    text-align: center;
+}
+
+
+._3kJ9jCU9BvXfSiR17mwAtb a {
+    color: white;
+    text-decoration: none;
+}
+
+._3kJ9jCU9BvXfSiR17mwAtb a:hover {
+    color: gold;
+}
+.AWpe5ZMBfFmCz_4FjEMqG {
+    min-height: 100%;
+    display: grid;
+    grid-area: h;
+    background-color: #72f3b0;
+    grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+}
+
+._2EZVSNevguvUjROEKmNSdK {
+    width: 60px;
+    height: 60px;
+    grid-column: 2 / 3;
+}
+
+.WS4YFLRgdmhYVgutSVeX- {
+    float: right;
+    display: grid;
+    grid-column: 3 / 4;
+    justify-content: end;
+    align-items: center;
+}
+
+
+
+
+
+/*# sourceMappingURL=main.css.map*/

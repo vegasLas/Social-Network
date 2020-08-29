@@ -1,0 +1,28 @@
+.app-wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template: minmax(80px, auto) 1fr minmax(70px, auto) / 1fr;
+  grid-template-areas:
+    "h"
+    "c"
+    "f";
+
+  .app-wrapper-content {
+    display: grid;
+    grid-area: c;
+    grid-template: 1fr / 1fr minmax(auto, 200px) minmax(auto, 800px) 1fr;
+    background-color: white;
+  }
+
+  .main-screen {
+    display: grid;
+    grid-column: 3 / 4;
+  }
+
+  .footer {
+    grid-area: f;
+    text-align: center;
+    background-color: #72f3b0;
+  }
+
+}

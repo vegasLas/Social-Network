@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import './App.css';
+import './App.scss';
 import { Route, withRouter, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { connect, Provider } from "react-redux";
 import { compose } from "redux";
@@ -33,20 +33,25 @@ class App extends Component<PropsType> {
     return (
       <div className='app-wrapper'>
         <HeaderContainer />
-        <Navbar />
-        <div className='app-wrapper-content'>
-          <Switch >
-            <Route path='/' exact> <Redirect to="/profile" /> </Route>
-            <Route path='/profile/:userId?'
-              render={() => <ProfileConteincerWithSuspens/> }/>
-            <Route path='/login'
-              render={() => <LoginWithSuspens />} />
-            <Route path='/users'
-              render={() => <UsersContainerWithSuspens />} />
-            <Route path='/dialogs'
-              render={() => <DialogsContainerWithSuspens />} />
-          </Switch>
+        <div className="app-wrapper-content">
+          <Navbar />
+          <div className="main-screen">
+            <Switch>
+              <Route path='/' exact> <Redirect to="/profile" /> </Route>
+              <Route path='/profile/:userId?'
+                render={() => <ProfileConteincerWithSuspens />} />
+              <Route path='/login'
+                render={() => <LoginWithSuspens />} />
+              <Route path='/users'
+                render={() => <UsersContainerWithSuspens />} />
+              <Route path='/dialogs'
+                render={() => <DialogsContainerWithSuspens />} />
+            </Switch>
+          </div>
         </div>
+        <footer className="footer">
+          Copyright
+        </footer>
       </div>
     );
   }

@@ -47,7 +47,7 @@ const usersReducer = (state = initialState, action: ActionsTypes): initialStateT
         case "SET_CURRENT_PAGE":
             return { ...state, currentPage: action.currentPage }
         case "SET_FILTER":
-            return { ...state, filter: action.payload}
+            return { ...state, filter: action.payload }
         case "SET_TOTAL_USERS_COUNT":
             return { ...state, totalUsersCount: action.totalUsersCount }
         case "TOGGLE_IS_FETCHING":

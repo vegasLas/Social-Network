@@ -1,0 +1,71 @@
+.img {
+    width: 100px;
+    height: 100px;
+}
+
+.main {
+    padding-top: 10px;
+
+}
+
+
+.userBlock {
+    margin-bottom: 10px;
+    display: flex;
+
+    .userAvatar {
+        flex: 0 1 20%;
+        text-align: center;
+    }
+
+    .userData {
+        flex: 0 1 80%;
+
+        .userName {
+            letter-spacing: 2px;
+        }
+
+        button {
+            width: 60px;
+            height: 20px;
+            border-radius: 10%;
+            text-transform: uppercase;
+            color: white;
+            font-size: 12px;
+            background-color: rgb(159, 226, 193);
+
+            &:hover {
+                box-shadow: 0 0 2px #72f3b0;
+            }
+        }
+
+        div {
+            margin-bottom: 10px;
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+}
+
+.Formik {
+    position: relative;
+}
+
+.inputLogo {
+    position: absolute;
+    left: 6px;
+    top: 5px;
+    content: url('../../pictures/users/find.png');
+}
+
+.formField {
+    padding: 5px;
+    padding-left: 25px;
+
+    &#before {
+        content: url(../../pictures/users/find.png);
+    }
+}
